@@ -1,0 +1,47 @@
+<tm-layout>
+  <tm-layout-column>
+    <div class="heading">
+      <!-- <img width="250px" height="120px" src="../../../assets/logo-1.png" alt=""> -->
+      <h4>Omar Azhar's Products Catalogue (Angular Assignment)</h4>
+      <!-- <div class="navBar">
+        <a (click)="openLogin(true)">Sign In</a>
+        <a > SignUp</a>
+   </div> -->
+      <div class="navBar">
+        <button
+          *ngIf="hide"
+          tmButton
+          shape="round"
+          (click)="login()"
+          status="primary"
+        >
+          Sign in
+        </button>
+      </div>
+    </div>
+    <!-- <div class="backgroundImage">
+            <img src="../../../assets/shooping-Image.png" alt="">
+ </div>
+ <div class="cartImage">
+      <img src="../../../assets/cart-3d.png" alt="">
+ </div> -->
+    <div>
+      <div class="backgroundImageEcommerce">
+        <!-- <img src="../../../assets/5464026-removebg-preview.png" alt=""> -->
+      </div>
+      <tm-card>
+        <!-- form header -->
+        <!-- <div class="userTableHeader">
+          {{ message }}
+        </div> -->
+        <tm-card-body>
+          <router-outlet></router-outlet>
+        </tm-card-body>
+      </tm-card>
+    </div>
+    <!-- <button tmButton (click)="openLogin(true)">Sign in</button> -->
+    <footer>
+      <h6>Copyright © 2023 Omar Azhar (EmpID: 32211) Product Catalogue.</h6>
+    </footer>
+  </tm-layout-column>
+</tm-layout>

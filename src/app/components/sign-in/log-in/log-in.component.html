@@ -1,0 +1,41 @@
+<br>
+<form class="signinForm" [formGroup]="signInForm" action="">
+
+  <tm-form-field>
+    <input type="email" shape="semi-round" class="form-control" formControlName="email" fullWidth placeholder="Email"
+      tmInput [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+      <div *ngIf="f.email.errors?.required">Email is required</div>
+      <div *ngIf="f.email.errors?.email">Email is invalid</div>
+    </div>
+  </tm-form-field>
+
+  <tm-form-field>
+    <input shape="semi-round" placeholder="password" class="form-control" fullWidth formControlName="password"
+      [type]="getInputType()" tmInput [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+    <button tmSuffix tmButton ghost (click)="toggleShowPassword()">
+      <i [class]="showPassword ? 'fa fa-eye' : 'fa fa-eye-slash'"
+        [attr.aria-label]="showPassword ? 'hide password' : 'show password'">
+      </i>
+    </button>
+    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+      <div *ngIf="f.password.errors?.required">Password is required</div>
+      <div *ngIf="f.password.errors?.minlength">
+        Password must be at least 6 characters
+      </div>
+      <div *ngIf="f.password.errors.maxlength">
+        Username must not exceed 40 characters
+      </div>
+    </div>
+  </tm-form-field>
+
+
+
+  <button (click)="signIn()" shape="semi-round" tmButton status="info" fullWidth>Sign In</button>
+  <p> Don't have an account? <a routerLink="/auth/sign-up">register here</a></p>
+  <a routerLink="/auth/forgot-passsword">Forgot Password</a>
+
+
+
+</form>
+

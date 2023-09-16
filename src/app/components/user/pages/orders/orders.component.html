@@ -1,0 +1,152 @@
+<tm-card *ngIf="orderData.length===0 ||orderData.length===null ||orderData.length==='' ">
+    <tm-card-body>
+        <div class="noProducts">
+            <img src="../../../../../assets/emptycart.svg " alt="" width="200px">
+            <h4> You Have No Order</h4>
+        </div>
+    </tm-card-body>
+</tm-card>
+
+<div class="orderContainer" *ngIf="orderData.length!=0 && !orderdeatils">
+    <!-- <dialog  class="snackBar">
+
+        <h6>Your order has been cancel</h6>
+
+        <p (click)="closeSnackBar()">close</p>
+
+    </dialog> -->
+    <ng-template #dialog let-data let-ref="dialogRef">
+            <div class="d-flex justify-content-between gap-3" style="padding: 10px; width:560px; background-color: green;position: fixed;top:130px;left:280px;">
+                <h6 style="color: white;">Your order has been cancel</h6>
+                <p (click)="ref.close()"> close</p>
+            </div>
+    </ng-template>
+    <br>
+    <!-- <button (click)="open(dialog)" tmButton status="primary">snackbar</button> -->
+    <br>
+    <div class="orderHistory" *ngFor="let orderData of orderData;">
+        <tm-card>
+            <tm-card-body>
+                <div class="dateContainer">
+                    {{orderData.date|date}}
+                </div>
+                <div class="container">
+
+                    <div *ngFor="let productData of orderData.product;">
+                        <div class="productDetails">
+                            <img width="100px" src="{{productData.productImage}}" alt="">
+
+                            <span>{{productData.productName}}</span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="totalValue">
+                    <h4>Total: {{orderData.totalvalue|currency}}</h4>
+                    <h5>{{orderData.status}}</h5>
+                </div>
+                <div class="cancelContainer" *ngIf="orderData.status!='Delivered'"><button tmButton status="danger"
+                        (click)="cancel(orderData.id)">cancel</button></div>
+            </tm-card-body>
+            <tm-card-footer>
+                <button tmButton shape="semi-round" status="primary" (click)="orderDetails(orderData)">
+                    View Details
+                </button>
+
+            </tm-card-footer>
+        </tm-card>
+
+    </div>
+
+</div>
+<div class="filterContainer" *ngIf="orderdeatils">
+    <div class="orderHistory">
+        <tm-card>
+            <tm-card-body>
+
+                <div *ngFor="let orderData of orderFilter">
+
+                    <div class="dateContainer">
+                        <button tmButton shape="semi-round" (click)="back()"><svg width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.25 12.2739L19.25 12.2739" stroke="#31384F" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M10.2998 18.2985L4.2498 12.2745L10.2998 6.24951" stroke="#31384F"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            back</button>
+                        <span> {{orderData.date|date}}</span>
+                    </div>
+
+                    <div class="container">
+
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Description</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tr *ngFor="let productData of orderData.product;">
+                                <td style="display: flex;flex-direction: column;">
+                                    <img width="100px" src="{{productData.productImage}}" alt="">
+                                    <span>{{productData.productName}}</span>
+                                </td>
+                                <td>
+                                    <span>{{productData.productDescription}}</span>
+                                </td>
+                                <td>
+                                    <span>{{productData.quantity}}</span>
+                                </td>
+                                <td>
+
+
+                                    <span>{{productData.quantity * productData.productPrice |currency}}</span>
+                                </td>
+                            </tr>
+                        </table>
+
+
+                    </div>
+
+                    <div class="totalValue">
+                        <h5></h5>
+                        <h4>Total: {{orderData.totalvalue|currency}}</h4>
+                    </div>
+                    <div class="addressValue">
+                        <table>
+                            <tr>
+                                <td>
+                                    <span>Address: </span>
+                                    <p> {{orderData.address}},{{orderData.pincode}}</p>
+                                </td>
+                                <td>
+                                    <span>Payment:</span>
+                                    <p>{{orderData.payment}}</p>
+
+                                </td>
+                            </tr>
+                        </table>
+
+
+                    </div>
+                    <div class="progresscontainer">
+                        <span *ngFor="let item of counts;let i = index">
+
+                            <span class="circles" [class.active]="orderData.status === item"></span>
+                            <span class="circle-desc" [class.circle-desc-active]="orderData.status === item">{{ item
+                                }}</span>
+                            <span class="bar" *ngIf="(i != counts.length-1)"></span>
+                        </span>
+                    </div>
+                </div>
+
+
+
+            </tm-card-body>
+        </tm-card>
+    </div>
+</div>

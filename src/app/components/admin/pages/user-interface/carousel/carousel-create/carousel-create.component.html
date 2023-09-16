@@ -1,0 +1,16 @@
+<p>carousel-create works!</p>
+<form class="productForm" [formGroup]="carouselForm" action="">
+    <div class="form-group">
+        <label for=""> Product Image</label>
+
+        <tm-form-field>
+          <input type="file" accept=".png, .jpg, .jpeg" formControlName="carouselImage" tmInput shape="semi-round"
+            (change)="onSelectFile($event)" fullWidth [ngClass]="{ 'is-invalid': submitted && f.carouselImage.errors }">
+          <div *ngIf="submitted && f.carouselImage.errors" class="invalid-feedback">
+            <div *ngIf="f.carouselImage.errors?.required">Image is required and supported format is .jpg,.jpeg,.png</div>
+          </div>
+        
+        </tm-form-field>
+      </div>
+</form>
+<button tmButton (click)="createcarousel()"> create</button>

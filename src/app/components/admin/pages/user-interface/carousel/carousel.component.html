@@ -1,0 +1,17 @@
+<div class="container">
+<div class="headerContainer">
+  <h6>carousel image </h6> <button tmButton (click)="create()"> +</button>
+</div >
+ 
+  <div class="carouselConatiner">
+    <div class="carouselView" *ngFor="let carousel of testData;let i=index ">
+      <div class="indexNumber"><p>{{i+1}}</p></div>
+      <img width="600px" height="120px" [src]="carousel.carouselImage" alt="Carousel Image">
+      <div class="indexNumber">
+        <button  tmButton (click)="delete(carousel.id)">delete</button>
+      </div>
+  
+    </div>
+  </div>
+  
+</div>

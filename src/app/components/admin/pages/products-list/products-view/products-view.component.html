@@ -1,0 +1,56 @@
+
+
+<button tmButton status="primary" (click)="addProduct()"> Add Product</button>
+<tm-card>
+    <tm-card-body>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Product Id</th>
+                    <th scope="col">Product Image</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Product Price</th>
+                    <th scope="col">Product quantity</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr  *ngFor="let productData of productData">
+                    <td scope="row" data-label="Product Id">{{productData.productCode}}</td>
+                    <td scope="row" data-label="Product Image"> <img src="{{productData.images}}" width="80px" height="80px" alt="error"></td>
+                    <td scope="row"data-label="Product Name">{{productData.title}}</td>
+                    <td scope="row"data-label="Product Price">{{productData.price | currency}}</td>
+                    <td scope="row" data-label="Product quantity">{{productData.productCount}}</td>
+                    <td scope="row" data-label="Status">{{productData.productStatus}}</td>
+                    <td  scope="row" data-label="Action" style="display: flex;padding: 20px;gap:6px;">
+                        <button (click)="edit(productData)" tmButton status="success" style="padding: 5px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="Iconly/Light/Edit">
+                        <g id="Edit">
+                        <path id="Stroke 1" d="M13.7473 20.4428H20.9999" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Stroke 3" fill-rule="evenodd" clip-rule="evenodd" d="M12.78 3.79479C13.5557 2.86779 14.95 2.73186 15.8962 3.49173C15.9485 3.53296 17.6295 4.83879 17.6295 4.83879C18.669 5.46719 18.992 6.80311 18.3494 7.82259C18.3153 7.87718 8.81195 19.7645 8.81195 19.7645C8.49578 20.1589 8.01583 20.3918 7.50291 20.3973L3.86353 20.443L3.04353 16.9723C2.92866 16.4843 3.04353 15.9718 3.3597 15.5773L12.78 3.79479Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Stroke 5" d="M11.0208 6.00098L16.473 10.1881" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                        </g>
+                        </svg>
+
+                         </button>
+                          <button  (click)="deleteProduct(productData.id)"style="padding: 5px;" tmButton status="danger">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g id="Iconly/Light/Delete">
+                                <g id="Delete">
+                                <path id="Stroke 1" d="M19.325 9.46777C19.325 9.46777 18.782 16.2028 18.467 19.0398C18.317 20.3948 17.48 21.1888 16.109 21.2138C13.5 21.2608 10.888 21.2638 8.28003 21.2088C6.96103 21.1818 6.13803 20.3778 5.99103 19.0468C5.67403 16.1848 5.13403 9.46777 5.13403 9.46777" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path id="Stroke 3" d="M20.7082 6.23926H3.75024" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path id="Stroke 5" d="M17.4406 6.23949C16.6556 6.23949 15.9796 5.68449 15.8256 4.91549L15.5826 3.69949C15.4326 3.13849 14.9246 2.75049 14.3456 2.75049H10.1126C9.53358 2.75049 9.02558 3.13849 8.87558 3.69949L8.63258 4.91549C8.47858 5.68449 7.80258 6.23949 7.01758 6.23949" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </g>
+                                </g>
+                                </svg>
+
+                          </button></td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </tm-card-body>
+</tm-card>

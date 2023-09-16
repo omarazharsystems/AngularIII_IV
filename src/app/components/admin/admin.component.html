@@ -1,0 +1,214 @@
+<tm-layout [dir]="direction">
+  <tm-layout-header fixed>
+    <div class="headerContainer">
+      <div style="display: flex;">
+        <svg (click)="toggle()" width="40" height="40" viewBox="0 0 24 24" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path d="M3.50293 7.41336H19.4411" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path d="M3.50293 12.4134H19.4411" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path d="M3.50293 17.4134H19.4411" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+
+        </svg>
+        <h1 class="headercontent">{{"admin.header.title" | translate}}</h1>
+      </div>
+
+      <div class="headercontent">
+        <tm-user [tmContextMenu]="items" name={{currentUser}} title="Engineer"></tm-user>
+        <button tmButton style="height:40px" (click)="open(dialog)">Log out</button>
+
+      </div>
+      <ng-template #template let-data>
+        <tm-card class="popover-card">
+          <tm-card-body>
+            <span></span>
+          </tm-card-body>
+        </tm-card>
+      </ng-template>
+    </div>
+
+
+
+  </tm-layout-header>
+  <tm-layout-header subheader>
+    <h3>{{message}}</h3>
+  </tm-layout-header>
+  <tm-sidebar tag="{{tag}}" responsive [compactedBreakpoints]="['xs', 'is']">
+
+    <h1 class="headercontent">{{"admin.header.title" | translate}}</h1>
+    <div class="headercontent">
+      <tm-user [tmContextMenu]="items" name={{currentUser}} title="Engineer"></tm-user>
+    </div>
+    <ul>
+      <li routerLinkActive="active">
+
+        <a routerLink="/admin/dashboard">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="fill-color" fill-rule="evenodd" clip-rule="evenodd"
+              d="M3 6.5C3 3.87479 3.02811 3 6.5 3C9.97189 3 10 3.87479 10 6.5C10 9.12521 10.0111 10 6.5 10C2.98893 10 3 9.12521 3 6.5Z"
+              stroke="#31384F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M14 6.5C14 3.87479 14.0281 3 17.5 3C20.9719 3 21 3.87479 21 6.5C21 9.12521 21.0111 10 17.5 10C13.9889 10 14 9.12521 14 6.5Z"
+              stroke="#31384F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M3 17.5C3 14.8748 3.02811 14 6.5 14C9.97189 14 10 14.8748 10 17.5C10 20.1252 10.0111 21 6.5 21C2.98893 21 3 20.1252 3 17.5Z"
+              stroke="#31384F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M14 17.5C14 14.8748 14.0281 14 17.5 14C20.9719 14 21 14.8748 21 17.5C21 20.1252 21.0111 21 17.5 21C13.9889 21 14 20.1252 14 17.5Z"
+              stroke="#31384F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          {{'admin.sidebar.nav.dashboard'|translate}}</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/admin/user-list">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M11.9847 15.3462C8.11707 15.3462 4.81421 15.931 4.81421 18.2729C4.81421 20.6148 8.09611 21.2205 11.9847 21.2205C15.8523 21.2205 19.1542 20.6348 19.1542 18.2938C19.1542 15.9529 15.8733 15.3462 11.9847 15.3462Z"
+              stroke="#31384F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M11.9846 12.0059C14.5227 12.0059 16.5799 9.94779 16.5799 7.40969C16.5799 4.8716 14.5227 2.81445 11.9846 2.81445C9.44655 2.81445 7.38845 4.8716 7.38845 7.40969C7.37988 9.93922 9.42369 11.9973 11.9523 12.0059H11.9846Z"
+              stroke="#31384F" stroke-width="1.42857" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          {{'admin.sidebar.nav.users'|translate}}</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/admin/products-list">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="Iconly/Light/Buy">
+              <g id="Buy">
+                <path id="Stroke 1"
+                  d="M2.75 3.25L4.83 3.61L5.793 15.083C5.87 16.02 6.653 16.739 7.593 16.736H18.502C19.399 16.738 20.16 16.078 20.287 15.19L21.236 8.632C21.342 7.899 20.833 7.219 20.101 7.113C20.037 7.104 5.164 7.099 5.164 7.099"
+                  stroke="#31384F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path id="Stroke 3" d="M14.125 10.7949H16.898" stroke="#31384F" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round" />
+                <path id="Stroke 5" fill-rule="evenodd" clip-rule="evenodd"
+                  d="M7.15435 20.2026C7.45535 20.2026 7.69835 20.4466 7.69835 20.7466C7.69835 21.0476 7.45535 21.2916 7.15435 21.2916C6.85335 21.2916 6.61035 21.0476 6.61035 20.7466C6.61035 20.4466 6.85335 20.2026 7.15435 20.2026Z"
+                  fill="#31384F" stroke="#31384F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path id="Stroke 7" fill-rule="evenodd" clip-rule="evenodd"
+                  d="M18.4346 20.2026C18.7356 20.2026 18.9796 20.4466 18.9796 20.7466C18.9796 21.0476 18.7356 21.2916 18.4346 21.2916C18.1336 21.2916 17.8906 21.0476 17.8906 20.7466C17.8906 20.4466 18.1336 20.2026 18.4346 20.2026Z"
+                  fill="#31384F" stroke="#31384F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </g>
+            </g>
+          </svg>
+
+          {{'admin.sidebar.nav.products'|translate}}</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/admin/order-list">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="Iconly/Light/Notification">
+              <g id="Notification">
+                <path id="Stroke 1" fill-rule="evenodd" clip-rule="evenodd"
+                  d="M12 17.8476C17.6392 17.8476 20.2481 17.1242 20.5 14.2205C20.5 11.3188 18.6812 11.5054 18.6812 7.94511C18.6812 5.16414 16.0452 2 12 2C7.95477 2 5.31885 5.16414 5.31885 7.94511C5.31885 11.5054 3.5 11.3188 3.5 14.2205C3.75295 17.1352 6.36177 17.8476 12 17.8476Z"
+                  stroke="#31384F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path id="Stroke 3" d="M14.3889 20.8574C13.0247 22.3721 10.8967 22.3901 9.51953 20.8574"
+                  stroke="#31384F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </g>
+            </g>
+          </svg>
+
+
+
+          {{'admin.sidebar.nav.order'|translate}}</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/admin/user-interface">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="Iconly/Light/Star">
+              <g id="Star">
+                <path id="Stroke 1" fill-rule="evenodd" clip-rule="evenodd"
+                  d="M13.1043 4.17701L14.9317 7.82776C15.1108 8.18616 15.4565 8.43467 15.8573 8.49218L19.9453 9.08062C20.9554 9.22644 21.3573 10.4505 20.6263 11.1519L17.6702 13.9924C17.3797 14.2718 17.2474 14.6733 17.3162 15.0676L18.0138 19.0778C18.1856 20.0698 17.1298 20.8267 16.227 20.3574L12.5732 18.4627C12.215 18.2768 11.786 18.2768 11.4268 18.4627L7.773 20.3574C6.87023 20.8267 5.81439 20.0698 5.98724 19.0778L6.68385 15.0676C6.75257 14.6733 6.62033 14.2718 6.32982 13.9924L3.37368 11.1519C2.64272 10.4505 3.04464 9.22644 4.05466 9.08062L8.14265 8.49218C8.54354 8.43467 8.89028 8.18616 9.06937 7.82776L10.8957 4.17701C11.3477 3.27433 12.6523 3.27433 13.1043 4.17701Z"
+                  stroke="#31384F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </g>
+            </g>
+          </svg>
+
+
+
+
+
+          {{'admin.sidebar.nav.userInterface'|translate}}</a>
+      </li>
+
+    </ul>
+ 
+    <button (click)="open(dialog)" tmButton>logout</button>
+  </tm-sidebar>
+
+ 
+
+  <tm-layout-column [dir]="direction">
+
+
+
+    <div class="sidebar-slider" [class.sidebar-slide-in]="sidebarShow">
+
+      <div class="sidebar-opener" (click)="sidebarShow = !sidebarShow">
+        <svg style=" animation-name: spin;
+                animation-duration: 5000ms;
+                animation-iteration-count: infinite;
+                animation-timing-function: linear;" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M20.8067 7.62337L20.1842 6.54328C19.6577 5.62936 18.4907 5.31408 17.5755 5.83847V5.83847C17.1399 6.0951 16.6201 6.16791 16.1307 6.04084C15.6413 5.91378 15.2226 5.59727 14.9668 5.16113C14.8023 4.8839 14.7139 4.56815 14.7105 4.2458V4.2458C14.7254 3.72898 14.5304 3.22816 14.17 2.85743C13.8096 2.48669 13.3145 2.27762 12.7975 2.27783H11.5435C11.037 2.27783 10.5513 2.47967 10.194 2.8387C9.83669 3.19773 9.63717 3.68435 9.63961 4.19088V4.19088C9.6246 5.23668 8.77248 6.07657 7.72657 6.07646C7.40421 6.07311 7.08846 5.9847 6.81123 5.82017V5.82017C5.89606 5.29577 4.72911 5.61105 4.20254 6.52497L3.53435 7.62337C3.00841 8.53615 3.3194 9.70236 4.23 10.2321V10.2321C4.8219 10.5738 5.18653 11.2053 5.18653 11.8888C5.18653 12.5723 4.8219 13.2038 4.23 13.5456V13.5456C3.32056 14.0717 3.00923 15.2351 3.53435 16.1451V16.1451L4.16593 17.2344C4.41265 17.6795 4.8266 18.0081 5.31619 18.1472C5.80578 18.2863 6.33064 18.2247 6.77462 17.9758V17.9758C7.21108 17.7211 7.73119 17.6513 8.21934 17.782C8.70749 17.9126 9.12324 18.2328 9.37416 18.6714C9.5387 18.9486 9.62711 19.2644 9.63046 19.5868V19.5868C9.63046 20.6433 10.487 21.4998 11.5435 21.4998H12.7975C13.8505 21.4998 14.7055 20.6489 14.7105 19.5959V19.5959C14.7081 19.0878 14.9089 18.5998 15.2682 18.2405C15.6275 17.8812 16.1155 17.6804 16.6236 17.6829C16.9452 17.6915 17.2596 17.7795 17.5389 17.9392V17.9392C18.4517 18.4651 19.6179 18.1541 20.1476 17.2435V17.2435L20.8067 16.1451C21.0618 15.7073 21.1318 15.1858 21.0012 14.6961C20.8706 14.2065 20.5502 13.7891 20.111 13.5364V13.5364C19.6718 13.2837 19.3514 12.8663 19.2208 12.3767C19.0902 11.8871 19.1603 11.3656 19.4154 10.9277C19.5812 10.6381 19.8214 10.398 20.111 10.2321V10.2321C21.0161 9.70265 21.3264 8.54325 20.8067 7.63252V7.63252V7.62337Z"
+            stroke="#31384F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="12.175" cy="11.885" r="2.635" stroke="#31384F" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </div>
+      <div class="sidebar-content">
+        <div>{{'admin.layout.settings.title' | translate}}</div>
+
+        <div class="layoutSetting">
+
+      
+          <tm-checkbox status="basic" [(ngModel)]="checkedDark" [checked]="currentlyChecked === check_box_type.dark"
+            (checkedChange)="dark($event)">
+            {{'admin.layout.theme.dark' | translate}}
+          </tm-checkbox>
+          <tm-checkbox status="basic" [(ngModel)]="checkedCosmic" [checked]="currentlyChecked === check_box_type.cosmic"
+            (checkedChange)="cosmic($event)">
+            {{'admin.layout.theme.cosmic' | translate}}
+          </tm-checkbox>
+          <tm-checkbox status="basic" [(ngModel)]="checkedCorporate"
+            [checked]="currentlyChecked === check_box_type.corporate" (checkedChange)="corporate($event)">
+            {{'admin.layout.theme.corporate' | translate}}
+          </tm-checkbox>
+
+          <tm-checkbox (checkedChange)="rtl($event)" status="basic">
+            {{'admin.layout.align'|translate}}
+          </tm-checkbox>
+
+
+
+        </div>
+        <div>Language settings</div>
+        <button (click)="useLanguage('ar')" *ngIf="englishButton" tmButton ghost style="color:var(--text-basic-color);">
+          Arabic </button> &nbsp;
+        <button (click)="useLanguage('en')" *ngIf="arabicButton" tmButton ghost style="color:var(--text-basic-color);">
+          English </button>
+      </div>
+    </div>
+
+    <router-outlet></router-outlet>
+    <footer>
+      <div>© 2022 Architect UI</div>
+    </footer>
+    <ng-template #dialog let-data let-ref="dialogRef">
+      <tm-card style="padding: 10px; width:400px;">
+
+        <tm-card-body>{{ data }}</tm-card-body>
+        <div class="d-flex justify-content-end gap-3">
+          <button tmButton status="primary" (click)="logOut()">Yes</button>
+          <button tmButton (click)="ref.close()"> Cancel</button>
+        </div>
+
+
+      </tm-card>
+    </ng-template>
+  </tm-layout-column>
+
+
+</tm-layout>

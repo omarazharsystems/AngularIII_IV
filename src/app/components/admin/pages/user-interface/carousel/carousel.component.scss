@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .headerContainer {
+        display: flex;
+        justify-content: space-between;
+        background-color: var(--text-basic-color);
+        padding: 10px;
+        h6{
+            color: var(--header-background-color);
+        }
+    }
+
+    .carouselConatiner {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+
+        .carouselView {
+            display: flex;
+            width: 100%;
+            gap: 50px;
+
+            .indexNumber {
+                padding: 20px;
+                text-align: center;
+
+            }
+        }
+
+
+    }
+
+}

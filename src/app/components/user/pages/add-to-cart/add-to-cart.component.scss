@@ -1,0 +1,172 @@
+tm-card {
+  width: 850px;
+  height: 550px;
+
+  tm-card-body {
+    width: 100%;
+    gap:5px;
+
+    .container {
+
+      table {
+        width: 100%;
+
+        thead tr:nth-child(1) {
+          background-color: #2c8cf4;
+          color: var(--header-background-color);
+
+        }
+
+        th,
+        td {
+          padding: 5px;
+        }
+      }
+
+      table td:nth-child(4) {
+        input {
+          width: 80px;
+        }
+      }
+    }
+
+    .checkoutContainer {
+      width: 400px;
+
+      .checkoutForm {
+        position: relative;
+        left: 63%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        text-align: left;
+        width: 100%;
+
+        .buttonGroup {
+          display: flex;
+          gap: 5px;
+          justify-content: flex-end;
+        }
+      }
+    }
+
+  }
+
+  .dismissButton {
+    position: relative;
+    left:96%;
+    top: 0%;
+    padding: 0%;
+    width: 20px;
+    height: 20px;
+ 
+  }
+
+  .noProducts {
+    border: 1px solid rgb(202, 200, 200);
+    width: 100%;
+    padding: 17%;
+    padding-left: 35%;
+    height: 90%;
+    // position: relative;
+    // top:100px;
+    // left:295px;
+
+    h4 {
+      font-weight: 300;
+    }
+
+  }
+}
+
+@media screen and (max-width: 600px) and (min-width:0px) {
+  tm-card {
+    tm-card-body {
+      .container {
+        table {
+          border: 0;
+        }
+
+
+        table thead {
+          border: none;
+          clip: rect(0 0 0 0);
+          height: 1px;
+          margin: -1px;
+          overflow: hidden;
+          padding: 0;
+          position: absolute;
+          width: 1px;
+        }
+
+        table tr {
+          border-bottom: 3px solid #ddd;
+          display: block;
+          margin-bottom: .625em;
+        }
+
+        table td {
+          border-bottom: 1px solid #ddd;
+          display: block;
+          font-size: .8em;
+          text-align: right;
+        }
+
+        table td::before {
+          /*
+                * aria-label has no advantage, it won't be read inside a table
+                content: attr(aria-label);
+                */
+          content: attr(data-label);
+          float: left;
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+
+        table td:last-child {
+          border-bottom: 0;
+          display: flex;
+          flex-direction: column;
+          text-align: left;
+        }
+
+        table td:nth-child(4) {
+          input {
+            width: 100%;
+          }
+        }
+      }
+
+      .checkoutContainer {
+        width: 100%;
+
+        .checkoutForm {
+          position: relative;
+          left: 1%;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          text-align: left;
+          width: 100%;
+
+          .buttonGroup {
+            display: flex;
+            gap: 5px;
+            justify-content: flex-end;
+          }
+        }
+      }
+    }
+
+    .noProducts {
+      position: relative;
+      top: 10%;
+      left: 5%;
+
+      h4 {
+        font-weight: 300;
+      }
+
+    }
+  }
+}

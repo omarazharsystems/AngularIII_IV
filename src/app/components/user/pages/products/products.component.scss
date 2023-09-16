@@ -1,0 +1,139 @@
+.flexContainer {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 10px;
+    position: relative;
+    top:10px;
+    padding-left: 30px;
+
+    tm-card {
+        width: 280px;
+        tm-card-body {
+            display: flex;
+            flex-flow: column;
+          
+            .imageContainer {
+                width: 200px;
+                padding: 5px;
+
+                img {
+                    width: 100px;
+                    height: 100px;
+                }
+
+            }
+
+            .detailsContainer {
+              
+                padding: 10px;
+
+                .inStock {
+                    color: green;
+                }
+
+                .outofStock {
+                    display: none;
+                }
+
+            }
+            .offerBatch {
+                position: absolute;
+                top:1px;
+                right:10px;
+                height: 60px;
+                width: 60px;
+                padding: 10px;
+                text-align: center;
+                padding-left: 10px;
+                padding-top: 13px;
+
+                -webkit-clip-path: polygon(51% 100%, 0 68%, 0 0, 100% 0, 99% 68%);
+                clip-path: polygon(51% 100%, 0 68%, 0 0, 100% 0, 99% 68%);
+
+
+                background-color: rgb(29, 122, 245);
+
+                h6 {
+                    font-size: 13pt;
+                    color: white;
+                }
+            }
+
+            .offerNone {
+                display: none;
+            }
+        }
+
+        tm-card-footer {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+       
+            
+            tm-form-field{
+                width: 120px;
+                // input[type=number] {
+                //     -moz-appearance: textfield;
+                //   }
+                  input::-webkit-outer-spin-button,
+                  input::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                  }
+            }
+            
+        }
+
+    }
+}
+
+.carouselConatiner{
+    height:180px;
+    background-color: rgb(211, 209, 209);
+    
+}
+
+tm-card {
+    width: 100%;
+
+    tm-card-body {
+        .dropdown{
+            display: none;
+        }
+        .container {
+            display: flex;
+            flex-flow: row wrap;
+            gap: 10px;
+
+            .filterModule {
+                width: 120px;
+                text-align: center;
+                height: 30px;
+
+            }
+
+            .filterModule:focus {
+                background-color: rgb(7, 117, 241);
+                color: white;
+                width: 120px;
+                height: 30px;
+                border: 1px solid rgb(7, 117, 241);
+            }
+        }
+
+    }
+}
+@media screen and (max-width:600px) and (min-width:0px){
+tm-card{
+    width:100%;
+    tm-card-body{
+        
+        .dropdown{
+            display: block;
+        }
+        .container{
+            display:none;
+        }
+    }
+}
+}

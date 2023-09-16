@@ -1,0 +1,279 @@
+tm-card {
+    tm-card-body {
+        .noProducts {
+            position: relative;
+            top: 20%;
+            left: 35%;
+
+            h4 {
+                font-weight: 300;
+            }
+
+        }
+
+    }
+}
+
+
+.orderContainer {
+    position: relative;
+    top: 60px;
+    dialog {
+        width: 600px;
+        display: flex;
+        flex-direction: row;
+        justify-content:space-between;
+        padding: 10px;
+        height:40px;
+        z-index: 1;
+        background-color: green;
+        border: green;
+      position: absolute;
+    top: -60%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+     h6{
+       color: white;
+     }
+    p{
+        color: black;
+    }
+    }
+    dialog::backdrop{
+        background-color: darkorange;
+        position: fixed;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+    }
+    table {
+        width: 100%;
+
+        thead tr:nth-child(1) {
+            background-color: #2c8cf4;
+            color: var(--header-background-color);
+
+        }
+
+        th,
+        td {
+            padding: 5px;
+        }
+
+        tbody tr:nth-child(2n+2) {
+            background-color: #2c8cf4;
+        }
+    }
+
+    table td:nth-child(4) {
+        input {
+            width: 80px;
+        }
+    }
+
+    .orderHistory {
+        width: 100%;
+      display: flex;
+      flex-direction: column-reverse;
+        tm-card {
+            width: 100%;
+
+            tm-card-footer {
+                text-align: center;
+            }
+
+            tm-card-body {
+                .container {
+                    display: flex;
+                    flex-flow: row wrap;
+                    gap: 20px;
+
+                    .productDetails {
+                        display: flex;
+                        flex-direction: column;
+                        padding: 10px;
+                        text-align: center;
+                        gap: 5px;
+                        border: 1px solid rgb(155, 154, 154);
+                    }
+
+                }
+
+                .dateContainer {
+                    position: absolute;
+                    inset: 10% 0% 0% 88%;
+                    background-color: #2c8cf4;
+                    color: white;
+                    padding-top: 8px;
+                    padding-left: 3px;
+                    border-radius: 10px;
+                    width: 100px;
+                    height: 40px;
+                    box-shadow: -1px 7px 13px -3px rgba(87, 79, 79, 0.75);
+                }
+                 .cancelContainer{
+                    display: flex;
+                    justify-content: flex-end;
+                 }
+                .totalValue {
+                    display: flex;
+                    justify-content: space-between;
+                }
+                
+
+            }
+        }
+    }
+}
+
+.filterContainer {
+
+       
+    .orderHistory {
+        width: 100%;
+
+        tm-card {
+            width: 100%;
+            height: 100%;
+          
+            tm-card-footer {
+                text-align: center;
+            }
+
+            tm-card-body {
+            
+                .container {
+                    display: flex;
+                    flex-flow:row;
+                    gap: 20px;
+                    position: relative;
+                    top:10px;
+                    table{
+                        width: 100%;
+                        thead tr{
+                           background-color: #2c8cf4;
+                           color: white;
+                        }
+                    }
+                   
+                    .productDetails {
+                        display: flex;
+                        flex-direction: column;
+                        padding: 10px;
+                        gap: 5px;
+                        border: 1px solid rgb(155, 154, 154);
+                    }
+
+                }
+
+                .dateContainer {
+                    width: 100%;
+                    display: flex;
+                    flex-flow: row;
+                    justify-content: space-between;
+
+                    span {
+                        background-color: #2c8cf4;
+                        color: white;
+                        padding-top: 8px;
+                        padding-left: 3px;
+                        border-radius: 10px;
+                        width: 100px;
+                        height: 40px;
+                        box-shadow: -1px 7px 13px -3px rgba(87, 79, 79, 0.75);
+                    }
+
+                }
+
+                .totalValue {
+                    display: flex;
+                    justify-content: space-between;
+                    position: relative;
+                    top:10px;
+                    
+                }
+                .addressValue{
+                    position: relative;
+                    top:10px;
+                    table{
+                        width: 100%;
+                        
+                        padding: 5px;
+                    }
+                    
+                }
+
+               
+                 
+                  
+                
+                  
+                  .progresscontainer{
+                    min-width:320px;
+                    margin: "0px auto";
+                    text-align: center;
+                    .circles{
+                        height: 0.938em;
+                        width: 0.938em;
+                        border: 0.188em solid #000;
+                        border-radius: 50%;
+                        display: inline-block;
+                      }
+                      .circle-desc{
+                        position: absolute;
+                        top:355px;
+                        font-size: 1.125em;
+                        width: auto;
+                        max-width:9.375em;
+                        margin-left:-0.750em;
+                       }
+                       .bar{
+                        width: 16%;
+                        height: 0.063em;
+                        margin-bottom:0.469em;
+                        border: 0.031em solid #000;
+                        color:#000;
+                        background-color:#000;
+                        display: inline-block;
+                        text-align:center;
+                        margin:"0 auto";
+                      }
+                       
+                  .active{
+                    background-color:#ffa500;
+                }
+                
+                .circle-desc-active{
+                font-weight: bold;
+                }
+                  }
+                  
+                  
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width:600px) and (min-width:0px) {
+    tm-card {
+        width: 100%;
+        height: 500px;
+
+        tm-card-body {
+            .noProducts {
+                position: relative;
+                top: 20%;
+                left: 5%;
+
+                h4 {
+                    font-weight: 300;
+                }
+
+            }
+        }
+    }
+}
+

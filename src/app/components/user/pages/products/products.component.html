@@ -1,0 +1,76 @@
+
+<tm-card>
+    <tm-card-body>
+        <div class="container">
+            <button tmButton class="filterModule" (click)="filterData('')">All Products</button>
+            <button tmButton class="filterModule" (click)="filterData('Electronics')">Electronics</button>
+            <button tmButton class="filterModule" (click)="filterData('Fashion')">Clothing</button>
+            <button tmButton class="filterModule" (click)="filterData('Home&Kitchen')">Home & kitchen</button>
+        </div>
+        <div class="dropdown">
+            <tm-select placeholder="Filter By" [ngModel]="selectedItem" (ngModelChange)="filterData($event)">
+                <tm-option value=" ">All Products</tm-option>
+                <tm-option value="Electronics">Electronic Categories</tm-option>
+                <tm-option value="Fashion">Clothing</tm-option>
+                <tm-option value="Home & kitchen">Home & kitchen</tm-option>
+            </tm-select>
+        </div>
+    </tm-card-body>
+</tm-card>
+
+
+
+
+<div class="flexContainer">
+<!-- <h1>PPP</h1> -->
+
+    <tm-card *ngFor="let product of filterProducts;let i = index">
+        <tm-card-body>
+            <div class="imageContainer">
+                <img src="{{product.images}}" alt="">
+            </div>
+            <div class="detailsContainer">
+                <div> <span>Name:</span>{{product.title}}</div>
+                <div> <span>Price:</span>{{product.price | currency}}</div>
+                <div> <span>Description:</span>{{product.description}}</div>
+                <div><span>Status:</span> <span
+                        [ngStyle]="{'color':(product.productStatus==='Out of stock')?'red':'green'}">{{product.productStatus}}
+                    </span></div>
+                <div><span [ngClass]="getClassofQuantity(product.productCount,product.productStatus)">Only
+                        {{product.productCount}} Products Left !</span></div>
+            </div>
+            <div [ngClass]=" getClassOf(product.productOffer)">
+                <h6>
+                    {{product.productOffer}} %
+                </h6>
+            </div>
+        </tm-card-body>
+        <tm-card-footer>
+            <div>
+                <tm-form-field appearance="legacy" style="width:50x;">
+
+
+                    <button  [disabled]="product.quantity===0 " tmPrefix status="primary" (click)="decrement(product)" tmButton>-</button>
+                    <input style="text-align:center;" tmInput [(ngModel)]="product.quantity" [ngModelOptions]="{standalone: true}" min="1"
+                        type="number" value="{{product.quantity}}" name="" class="form-control" />
+                    <button  [disabled]="product.productCount===0" tmSuffix status="primary" tmButton (click)="increment(product)">+</button>
+                </tm-form-field>
+            </div>
+
+            <button  style="width: 50px; padding: 0px;" tmButton (click)="addToCart(product)" status="primary"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="30" height="30" viewBox="0 0 256 256" xml:space="preserve">
+
+                <defs>
+                </defs>
+                <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
+                    <path d="M 72.975 58.994 H 31.855 c -1.539 0 -2.897 -1.005 -3.347 -2.477 L 15.199 13.006 H 3.5 c -1.933 0 -3.5 -1.567 -3.5 -3.5 s 1.567 -3.5 3.5 -3.5 h 14.289 c 1.539 0 2.897 1.005 3.347 2.476 l 13.309 43.512 h 36.204 l 10.585 -25.191 h -6.021 c -1.933 0 -3.5 -1.567 -3.5 -3.5 s 1.567 -3.5 3.5 -3.5 H 86.5 c 1.172 0 2.267 0.587 2.915 1.563 s 0.766 2.212 0.312 3.293 L 76.201 56.85 C 75.655 58.149 74.384 58.994 72.975 58.994 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(250,250,250); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                    <circle cx="28.88" cy="74.33" r="6.16" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(245, 245, 245); fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
+                    <circle cx="74.59" cy="74.33" r="6.16" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(247, 243, 243); fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
+                    <path d="M 62.278 19.546 H 52.237 V 9.506 c 0 -1.933 -1.567 -3.5 -3.5 -3.5 s -3.5 1.567 -3.5 3.5 v 10.04 h -10.04 c -1.933 0 -3.5 1.567 -3.5 3.5 s 1.567 3.5 3.5 3.5 h 10.04 v 10.04 c 0 1.933 1.567 3.5 3.5 3.5 s 3.5 -1.567 3.5 -3.5 v -10.04 h 10.041 c 1.933 0 3.5 -1.567 3.5 -3.5 S 64.211 19.546 62.278 19.546 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(250,250,250); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                </g>
+                </svg></button>
+
+
+        </tm-card-footer>
+    </tm-card>
+
+</div>

@@ -1,0 +1,111 @@
+<tm-card *ngIf="!checkout">
+    <tm-card-body>
+        <button class="dismissButton" status="danger" tmButton (click)=" dialogCloseBtn()"> x
+             </button>
+        <div class="container" *ngIf="cartProduct.length!=0">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Image</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Sub Total</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of cartProduct;let i = index">
+
+                        <td scope="row" data-label="Image"><img src="{{item.images}}" width="80px" height="80px"
+                                alt=""></td>
+                        <td scope="row" data-label="Product Name">{{item.title}}</td>
+                        <td scope="row" data-label="Price">{{item.price}}</td>
+                        <td scope="row" data-label="Quantity"> <input tmInput [(ngModel)]="item.quantity"
+                                [ngModelOptions]="{standalone: true}" min="1" type="number" value="{{ item.quantity }}"
+                                name="" class="form-control"   [(ngModel)]="item.quantity"
+                                (selectionChange)="dropDownValue($event,item.id)" /></td>
+                        <td scope="row" data-label="Sub Total" >{{item.price * item.quantity  | currency }}</td>
+                        <td scope="row"> <button class="btn btn-danger" (click)="removeFromCart(item)"> x</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"></td>
+                        <td>Total</td>
+                        <td>
+                            {{updateTotalPrice() |currency}}
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+
+                        </td>
+                        <td><button tmButton status="success" (click)="checkOut()"> check out</button></td>
+                        <td><button tmButton status="primary" (click)="removeAllProducts()"> Clear Items</button> </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+        <div class="noProducts" *ngIf="cartProduct.length===0">
+            <img src="../../../../../assets/6011.jpg " alt="" width="200px">
+            <h4>Your Cart Is Empty</h4>
+        </div>
+    </tm-card-body>
+</tm-card>
+
+
+<tm-card *ngIf="checkout">
+    <tm-card-body>
+        <h2>Check Out</h2>
+        <div class="checkoutContainer">
+
+            <form class="checkoutForm" [formGroup]="checkoutForm">
+
+                <div>
+                    <label for="name">
+                      Email
+                    </label>
+                    <input tmInput fullWidth id="email" type="text" formControlName="email">
+                </div>
+
+                <div>
+                    <label for="address">
+                        Address
+                    </label>
+                    <textarea tmInput fullWidth id="address" placeholder="address" formControlName="address"></textarea>
+                </div>
+                <div>
+                    <label for="address">
+                        Pincode
+                    </label>
+
+                    <!-- <input fullWidth tmInput placeholder="Pincode" type="text"
+                        formControlName="pincode" /> -->
+ <tm-select placeholder="Pincode" fullWidth formControlName="pincode" [ngModel]="selectedItem"(ngModelChange)="getDeliverCharges($event)">
+    <tm-option value="624001">624001</tm-option>
+    <tm-option value="625002">625002</tm-option>
+    <tm-option value="632001">632001</tm-option>
+ </tm-select>
+
+                </div>
+                <div>
+                    <label for="payment">Payment Method</label>
+                    <tm-select placeholder="Payment Method" fullWidth formControlName="payment">
+                        <tm-option *ngFor="let payment of payment"
+                            value="{{payment.value}}">{{payment.value}}</tm-option>
+                    </tm-select>
+
+                </div>
+
+                <div class="buttonGroup">
+                    <button tmButton status="success" class="button" (click)="order()">Order</button>
+                    <button tmButton (click)="checkOut()" status="primary">
+                        cancel
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </tm-card-body>
+</tm-card>

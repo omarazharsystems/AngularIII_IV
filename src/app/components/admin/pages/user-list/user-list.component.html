@@ -1,0 +1,6 @@
+<tm-card>
+    <tm-grid style="width:100%;height:300px;" [tmColumnsList]="columnsList" [tmRowData]="usersData"
+        [tmNoRowFoundMessage]="'No User Found'" [tmLoadingMessage]="'User Loading'" [tmGridPagination]="false"
+        [tmSearchEnable]="false" [tmSearchOption]="'hitSubmit'" [tmTotalPageCount]="10" [tmTotalRecords]="100"
+        (tmGridSorting)="gridSorting($event)" (tmGridSearch)="gridSearch($event)"></tm-grid>
+</tm-card>

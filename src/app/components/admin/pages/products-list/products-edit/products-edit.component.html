@@ -1,0 +1,185 @@
+<tm-card>
+  <tm-card-body>
+    <form class="productForm" [formGroup]="productForm" action="">
+      <div class="container">
+      <div class="form-group">
+        <label for=""> Product Id</label>
+        <tm-form-field>
+
+          <input type="text" shape="semi-round" class="form-control" formControlName="productCode" fullWidth
+            placeholder="Product Id" tmInput [ngClass]="{ 'is-invalid': submitted && f.productCode.errors }">
+          <div *ngIf="submitted && f.productCode.errors" class="invalid-feedback">
+            <div *ngIf="f.productCode.errors?.required">Product Id is required</div>
+          </div>
+        </tm-form-field>
+      </div>
+      <div class="form-group">
+        <label for=""> Product Name</label>
+        <tm-form-field>
+          <input type="text" shape="semi-round" class="form-control" formControlName="productName" fullWidth
+            placeholder="Product Name" tmInput [ngClass]="{ 'is-invalid': submitted && f.productName.errors }">
+          <div *ngIf="submitted && f.productName.errors" class="invalid-feedback">
+            <div *ngIf="f.productName.errors?.required">Product Name is required</div>
+          </div>
+        </tm-form-field>
+      </div>
+    </div>
+    <div class="container">
+      <div class="form-group">
+        <label for=""> Product Price</label>
+        <tm-form-field>
+          <input type="number" min="0" shape="semi-round" class="form-control" formControlName="productPrice" fullWidth
+            placeholder="Price" tmInput [ngClass]="{ 'is-invalid': submitted && f.productPrice.errors }">
+          <div *ngIf="submitted && f.productPrice.errors" class="invalid-feedback">
+            <div *ngIf="f.productPrice.errors?.required">Product Price is required</div>
+          </div>
+        </tm-form-field>
+      </div>
+      <div class="form-group">
+        <label for=""> Product Category</label>
+        <tm-form-field>
+          <tm-select placeholder="Category" shape="semi-round" formControlName="productCategory" fullWidth>
+            <tm-option value="Electronics">Electronics</tm-option>
+            <tm-option value="Fashion">Fashion</tm-option>
+            <tm-option value="Home&Kitchen">Home & Kitchen</tm-option>
+          </tm-select>
+        </tm-form-field>
+      </div>
+    </div>
+    <div class="container">
+      <div class="form-group" >
+        <label for="">Product Description</label>
+        <tm-form-field>
+          <textarea name="" id="" cols="30" rows="1" tmInput formControlName="productDescription" fullWidth
+            placeholder="Product Description"></textarea>
+        </tm-form-field>
+      </div>
+      <div class="form-group">
+        <label for=""> Product Image</label>
+
+        <tm-form-field>
+          <input type="file" accept=".png, .jpg, .jpeg" formControlName="productImage" tmInput shape="semi-round"
+            (change)="onSelectFile($event)" fullWidth [ngClass]="{ 'is-invalid': submitted && f.images.errors }">
+
+          <p>Or</p>
+          <label for="">Image Url</label>
+          <input type="text" formControlName="productImage" tmInput shape="semi-round"
+           fullWidth [ngClass]="{ 'is-invalid': submitted && f.images.errors }">
+           <div *ngIf="submitted && f.images.errors" class="invalid-feedback">
+            <div *ngIf="f.images.errors?.required">Image is required and supported format is .jpg,.jpeg,.png</div>
+          </div>
+        </tm-form-field>
+        <img src="{{productsData.images}}" alt="">
+      </div>
+    </div>
+    <div class="container">
+      <div class="form-group">
+        <label for=""> Quantity</label>
+        <tm-form-field>
+          <input type="number" min="0"fullWidth shape="semi-round" tmInput formControlName="productCount">
+        </tm-form-field>
+      </div>
+      <div class="form-group">
+        <label for=""> Status</label>
+        <tm-form-field>
+          <tm-select placeholder="Status" shape="semi-round" formControlName="productStatus" fullWidth>
+            <tm-option value="In stock">In stock</tm-option>
+            <tm-option value="Out of stock">Out of stock</tm-option>
+          </tm-select>
+        </tm-form-field>
+      </div>
+    </div>
+    <div  class="container">
+      <div class="form-group">
+      <label for=""> Offer</label>
+      <tm-form-field>
+       <input type="number" min="0" tmInput fullWidth  shape="semi-round" formControlName="productOffer">
+      </tm-form-field>
+    </div>
+      </div>
+    <div  class="container" >
+      <div class="button-group">
+      <button (click)="update()" shape="semi-round" tmButton status="primary" fullWidth>Update </button>
+    </div>
+  </div>
+    </form>
+  </tm-card-body>
+</tm-card>
+
+
+<!-- <tm-card>
+  <tm-card-body>
+    <form class="productForm" [formGroup]="productForm" action="">
+      <div>
+        <label for=""> Product Id</label>
+        <tm-form-field>
+
+          <input type="text" shape="semi-round" class="form-control" formControlName="productCode" fullWidth
+            placeholder="Product Id" tmInput [ngClass]="{ 'is-invalid': submitted && f.productCode.errors }">
+          <div *ngIf="submitted && f.productCode.errors" class="invalid-feedback">
+            <div *ngIf="f.productCode.errors?.required">Product Id is required</div>
+          </div>
+        </tm-form-field>
+      </div>
+      <div>
+        <label for=""> Product Name</label>
+        <tm-form-field>
+          <input type="text" shape="semi-round" class="form-control" formControlName="productName" fullWidth
+            placeholder="Product Name" tmInput [ngClass]="{ 'is-invalid': submitted && f.productName.errors }">
+          <div *ngIf="submitted && f.productName.errors" class="invalid-feedback">
+            <div *ngIf="f.productName.errors?.required">Product Name is required</div>
+          </div>
+        </tm-form-field>
+      </div>
+      <div>
+        <label for=""> Product Price</label>
+        <tm-form-field>
+          <input type="number" shape="semi-round" class="form-control" formControlName="productPrice" fullWidth
+            placeholder="Price" tmInput [ngClass]="{ 'is-invalid': submitted && f.productPrice.errors }">
+          <div *ngIf="submitted && f.productPrice.errors" class="invalid-feedback">
+            <div *ngIf="f.productPrice.errors?.required">Product Price is required</div>
+          </div>
+        </tm-form-field>
+      </div>
+      <div>
+        <label for=""> Product Category</label>
+        <tm-form-field>
+          <tm-select placeholder="Category" shape="semi-round" formControlName="productCategory" fullWidth>
+            <tm-option value="Electronics">Electronics</tm-option>
+            <tm-option value="Fashion">Fashion</tm-option>
+            <tm-option value="Home & Kitchen">Home & Kitchen</tm-option>
+          </tm-select>
+        </tm-form-field>
+      </div>
+      <div>
+        <label for="">Product Description</label>
+        <tm-form-field>
+          <textarea name="" id="" cols="30" rows="1" tmInput formControlName="productDescription" fullWidth
+            placeholder="Product Description"></textarea>
+        </tm-form-field>
+      </div>
+      <div>
+        <label for=""> Product Image</label>
+
+        <tm-form-field>
+          <input type="file" accept=".png, .jpg, .jpeg" formControlName="productImage" tmInput shape="semi-round"
+            (change)="onSelectFile($event)" fullWidth [ngClass]="{ 'is-invalid': submitted && f.images.errors }">
+          <div *ngIf="submitted && f.images.errors" class="invalid-feedback">
+            <div *ngIf="f.images.errors?.required">Image is required and supported format is .jpg,.jpeg,.png</div>
+          </div>
+
+        </tm-form-field>
+         <img src="{{productsData.images}}" alt="">
+      </div>
+
+
+
+
+
+
+
+      <button (click)="update()" shape="semi-round" tmButton status="primary" fullWidth>Create </button>
+    </form>
+  </tm-card-body>
+</tm-card> -->
+

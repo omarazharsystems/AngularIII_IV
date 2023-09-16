@@ -1,0 +1,136 @@
+
+<div class="slickContainer">
+    <img width="100%" src="../../../../../assets/pic-5.jpg" alt="">
+</div>
+<!-- category container -->
+<div class="slickContainer">
+  <div *ngFor="let product of filterProducts;let i = index">
+    <tm-card-body>
+        <div class="imageContainer">
+            <img src="{{product.images}}" alt="products">
+        </div>
+        <div class="detailsContainer">
+            <div> <span>Name:</span>{{product.title}}</div>
+            <div> <span>Price:</span>{{product.price | currency}}</div>
+            <!-- <div> <span>Description:</span>{{product.description}}</div> -->
+            <div><span>Status:</span> <span
+                    [ngStyle]="{'color':(product.productStatus==='Out of stock')?'red':'green'}">{{product.productStatus}}
+                </span></div>
+            <div><span [ngClass]="getClassofQuantity(product.productCount,product.productStatus)">Only
+                    {{product.productCount}} Products Left !</span></div>
+        </div>
+        <div [ngClass]=" getClassOf(product.productOffer)">
+            <h6>
+                {{product.productOffer}} %
+            </h6>
+        </div>
+    </tm-card-body>
+    <tm-card-footer>
+
+
+        <button  style="width: 50px; padding: 0px;" tmButton (click)="addToCart(product)" status="primary"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="30" height="30" viewBox="0 0 256 256" xml:space="preserve">
+
+            <defs>
+            </defs>
+            <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
+                <path d="M 72.975 58.994 H 31.855 c -1.539 0 -2.897 -1.005 -3.347 -2.477 L 15.199 13.006 H 3.5 c -1.933 0 -3.5 -1.567 -3.5 -3.5 s 1.567 -3.5 3.5 -3.5 h 14.289 c 1.539 0 2.897 1.005 3.347 2.476 l 13.309 43.512 h 36.204 l 10.585 -25.191 h -6.021 c -1.933 0 -3.5 -1.567 -3.5 -3.5 s 1.567 -3.5 3.5 -3.5 H 86.5 c 1.172 0 2.267 0.587 2.915 1.563 s 0.766 2.212 0.312 3.293 L 76.201 56.85 C 75.655 58.149 74.384 58.994 72.975 58.994 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(250,250,250); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                <circle cx="28.88" cy="74.33" r="6.16" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(245, 245, 245); fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
+                <circle cx="74.59" cy="74.33" r="6.16" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(247, 243, 243); fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
+                <path d="M 62.278 19.546 H 52.237 V 9.506 c 0 -1.933 -1.567 -3.5 -3.5 -3.5 s -3.5 1.567 -3.5 3.5 v 10.04 h -10.04 c -1.933 0 -3.5 1.567 -3.5 3.5 s 1.567 3.5 3.5 3.5 h 10.04 v 10.04 c 0 1.933 1.567 3.5 3.5 3.5 s 3.5 -1.567 3.5 -3.5 v -10.04 h 10.041 c 1.933 0 3.5 -1.567 3.5 -3.5 S 64.211 19.546 62.278 19.546 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(250,250,250); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+            </g>
+            </svg></button>
+
+
+    </tm-card-footer>
+</div>
+    <!-- <div class="imageContainer">
+
+        <img src="../../../../../assets/productsImage/phone-4-removebg-preview.png" alt="errors">
+        <div class="sticker">
+            <h6>Electronics</h6>
+        </div>
+
+    </div>
+     <div class="imageContainer">
+
+        <img src="../../../../../assets/productsImage/fashion-removebg-preview.png" alt="errors">
+        <div class="sticker">
+            <h6>Clothing</h6>
+        </div>
+
+    </div>
+    <div class="imageContainer">
+
+        <img src="../../../../../assets/productsImage/kitchen.jpg" alt="errors">
+        <div class="sticker">
+            <h6>Kitchen</h6>
+        </div>
+
+    </div>
+    <div class="imageContainer">
+
+        <img src="../../../../../assets/productsImage/staples.jpg" alt="errors">
+        <div class="sticker">
+            <h6>Groceries</h6>
+        </div>
+
+    </div> -->
+</div>
+
+ <!-- slick-carousel
+
+  <ngx-slick-carousel class="carousel"
+  #slickModal="slick-carousel"
+  [config]="slideConfig"
+  (init)="slickInit($event)"
+  (breakpoint)="breakpoint($event)"
+  (afterChange)="afterChange($event)"
+  (beforeChange)="beforeChange($event)">
+<div ngxSlickItem *ngFor="let slide of slides" class="slide">
+<img style="padding: 20px;" class="slideImage" src="{{ slide.img }}" alt="" width="100%">
+</div>
+</ngx-slick-carousel> -->
+<!-- <div class="flexContainer"> -->
+
+  <!-- <tm-card *ngFor="let product of filterProducts;let i = index">
+    <tm-card-body>
+        <div class="imageContainer">
+            <img src="{{product.images}}" alt="products">
+        </div>
+        <div class="detailsContainer">
+            <div> <span>Name:</span>{{product.title}}</div>
+            <div> <span>Price:</span>{{product.price | currency}}</div>
+            <div> <span>Description:</span>{{product.description}}</div>
+            <div><span>Status:</span> <span
+                    [ngStyle]="{'color':(product.productStatus==='Out of stock')?'red':'green'}">{{product.productStatus}}
+                </span></div>
+            <div><span [ngClass]="getClassofQuantity(product.productCount,product.productStatus)">Only
+                    {{product.productCount}} Products Left !</span></div>
+        </div>
+        <div [ngClass]=" getClassOf(product.productOffer)">
+            <h6>
+                {{product.productOffer}} %
+            </h6>
+        </div>
+    </tm-card-body>
+    <tm-card-footer>
+
+
+        <button  style="width: 50px; padding: 0px;" tmButton (click)="addToCart(product)" status="primary"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="30" height="30" viewBox="0 0 256 256" xml:space="preserve">
+
+            <defs>
+            </defs>
+            <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
+                <path d="M 72.975 58.994 H 31.855 c -1.539 0 -2.897 -1.005 -3.347 -2.477 L 15.199 13.006 H 3.5 c -1.933 0 -3.5 -1.567 -3.5 -3.5 s 1.567 -3.5 3.5 -3.5 h 14.289 c 1.539 0 2.897 1.005 3.347 2.476 l 13.309 43.512 h 36.204 l 10.585 -25.191 h -6.021 c -1.933 0 -3.5 -1.567 -3.5 -3.5 s 1.567 -3.5 3.5 -3.5 H 86.5 c 1.172 0 2.267 0.587 2.915 1.563 s 0.766 2.212 0.312 3.293 L 76.201 56.85 C 75.655 58.149 74.384 58.994 72.975 58.994 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(250,250,250); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                <circle cx="28.88" cy="74.33" r="6.16" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(245, 245, 245); fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
+                <circle cx="74.59" cy="74.33" r="6.16" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(247, 243, 243); fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
+                <path d="M 62.278 19.546 H 52.237 V 9.506 c 0 -1.933 -1.567 -3.5 -3.5 -3.5 s -3.5 1.567 -3.5 3.5 v 10.04 h -10.04 c -1.933 0 -3.5 1.567 -3.5 3.5 s 1.567 3.5 3.5 3.5 h 10.04 v 10.04 c 0 1.933 1.567 3.5 3.5 3.5 s 3.5 -1.567 3.5 -3.5 v -10.04 h 10.041 c 1.933 0 3.5 -1.567 3.5 -3.5 S 64.211 19.546 62.278 19.546 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(250,250,250); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+            </g>
+            </svg></button>
+
+
+    </tm-card-footer>
+</tm-card> -->
+
+
+  <!-- </div> -->

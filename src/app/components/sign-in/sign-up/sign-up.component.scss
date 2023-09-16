@@ -1,0 +1,13 @@
+.signupForm{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    text-align:left;
+    .invalid-feedback{
+     color: red;
+    }
+    .is-invalid{
+     border-color: red;
+     color: red;
+    }
+ }

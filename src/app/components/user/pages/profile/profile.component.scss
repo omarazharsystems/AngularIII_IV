@@ -1,0 +1,21 @@
+tm-card {
+    width: 100%;
+    height: 600px;
+
+    tm-card-body {
+        align-items: center;
+
+        .userName {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 18pt;
+            color: var(--text-basic-color);
+
+            img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    }
+}

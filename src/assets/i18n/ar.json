@@ -1,0 +1,30 @@
+{
+	"commonmessage":{
+		"staticcontent.internet.error":"يرجى التحقق من الإنترنت الخاص بك",
+		"staticcontent.quote.stepper": "اقتبس",
+		"staticcontent.moreinfo.stepper": "مزيد من المعلومات",
+		"staticcontent.payment.stepper": "دفع",
+		"staticcontent.policy.stepper": "سياسات"
+	},
+	"admin": {
+        "userName":"يوحنا",
+        "userTitle":"مطور برامج",
+		"page.title": "مشرف",
+        "header.title":"الهندسه المعماريه",
+        "layout.settings.title":"إعدادات الشكل الظاهري",
+		"layout.theme.dark": "ظلام",
+		"layout.theme.cosmic": "كوني",
+		"layout.theme.corporate": "شركة كبرى",
+        "layout.align":"من اليمين الى اليسار",
+        "sidebar.nav.dashboard":"لوحة القيادة",
+        "sidebar.nav.users":"المستخدمون"
+	},
+    "dashboard":{
+        "card.title.booking":"الحجز",
+        "card.title.visits":"زيارات الموقع",
+        "card.title.revenue":"ربح",
+        "card.title.users":"المستخدمون",
+        "card.footer":"تم التحديث منذ 4 دقائق"
+
+  }
+}

@@ -1,0 +1,88 @@
+<tm-card>
+
+  <tm-card-body>
+    <div class=" userName" align="center"> <svg width="100" height="100" viewBox="0 0 24 24" fill="grey"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M11.9847 15.3462C8.11707 15.3462 4.81421 15.931 4.81421 18.2729C4.81421 20.6148 8.09611 21.2205 11.9847 21.2205C15.8523 21.2205 19.1542 20.6348 19.1542 18.2938C19.1542 15.9529 15.8733 15.3462 11.9847 15.3462Z"
+          stroke="#31384F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M11.9846 12.0059C14.5227 12.0059 16.5799 9.94779 16.5799 7.40969C16.5799 4.8716 14.5227 2.81445 11.9846 2.81445C9.44655 2.81445 7.38845 4.8716 7.38845 7.40969C7.37988 9.93922 9.42369 11.9973 11.9523 12.0059H11.9846Z"
+          stroke="#31384F" stroke-width="1.42857" stroke-linecap="round" stroke-linejoin="round" />
+      </svg> {{userdata.userName}} </div>
+    <form [formGroup]="profileForm">
+      <table class="table table-user-information">
+        <tbody>
+          <tr>
+            <td>Id</td>
+            <td><input type="text" fullWidth formControlName="id" tmInput></td>
+          </tr>
+          <tr>
+            <td>Name</td>
+            <td><input type="text" fullWidth formControlName="userName" tmInput></td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td><input type="email" fullWidth formControlName="email" tmInput></td>
+          </tr>
+          <tr>
+            <td>Gender</td>
+            <td>
+              <tm-select placeholder="gender" formControlName="gender" fullWidth>
+                <tm-option value="male">Male</tm-option>
+                <tm-option value="female">Female</tm-option>
+              </tm-select>
+            </td>
+
+          </tr>
+          <!-- <tr>
+                    <td>Date of Birth</td>
+                    <td>08/25/2016</td>
+                  </tr> -->
+
+          <!-- <tr>
+                      <td>Gender</td>
+                      <td><input type="text" tmInput value="{{userdata.Gender}}"></td>
+                    </tr> -->
+          <tr>
+            <td>Phone Number</td>
+            <td><input type="tel" placeholder="Phone Number" fullWidth tmInput formControlName="phoneNumber"></td>
+          </tr>
+          <tr>
+            <td>Password</td>
+            <td>
+              <tm-form-field>
+                <input shape="semi-round" placeholder="password" class="form-control" fullWidth
+                  formControlName="password" [type]="getInputType()" tmInput
+                  [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                <button tmSuffix tmButton ghost (click)="toggleShowPassword()">
+                  <i [class]="showPassword ? 'fa fa-eye' : 'fa fa-eye-slash'"
+                    [attr.aria-label]="showPassword ? 'hide password' : 'show password'">
+                  </i>
+                </button>
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                  <div *ngIf="f.password.errors?.required">Password is required</div>
+                  <div *ngIf="f.password.errors?.minlength">
+                    Password must be at least 6 characters
+                  </div>
+                  <div *ngIf="f.password.errors.maxlength">
+                    Username must not exceed 40 characters
+                  </div>
+                </div>
+              </tm-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Address</td>
+            <td><textarea placeholder="address" tmInput fullWidth formContolName="address"></textarea></td>
+          </tr>
+
+
+        </tbody>
+      </table>
+      <button tmButton (click)="updateProfile()" status="primary"> submit</button>
+    </form>
+
+  </tm-card-body>
+</tm-card>
